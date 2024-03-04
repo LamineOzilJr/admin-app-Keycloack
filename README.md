@@ -1,81 +1,74 @@
-Projet admin-app
-Ce projet représente une application basée sur Spring Boot, utilisant Java 8, Maven, Docker, et des fonctionnalités de journalisation, entre autres.
+# Projet admin-app
 
-Structure du Projet
-Le projet est structuré en plusieurs packages pour assurer une claire séparation des responsabilités :
+Ce projet Spring Boot utilise Java 8, Maven, Docker, et des logs pour construire une architecture solide.
 
-sn.isi.entities
-Ce package englobe les entités JPA, annotées de manière appropriée pour la génération de la base de données.
+## Structure du Projet
 
-sn.isi.dto
-Il contient des classes DTO (Data Transfer Object) correspondant aux entités, mais sans les annotations JPA. Ceci facilite la manipulation des objets de la base de données dans les vues.
+Le projet est divisé en plusieurs packages pour une meilleure organisation :
 
-sn.isi.dao
-Ce package abrite des interfaces DAO (Data Access Object) pour chaque entité, étendant JpaRepository pour la gestion des opérations CRUD.
+### `sn.isi.entities`
 
-sn.isi.mapping
-Des interfaces de mappage permettent de convertir chaque entité en son équivalent DTO, et vice versa.
+Contient les entités JPA avec les annotations nécessaires pour générer la base de données.
 
-sn.isi.exception
-Des classes personnalisées sont fournies pour la gestion des exceptions.
+### `sn.isi.dto`
 
-sn.isi.service
-Des services pour chaque entité sont regroupés ici, gérant les opérations CRUD ainsi que d'autres fonctionnalités personnalisées.
+Inclut des classes DTO (Data Transfer Object) pour les mêmes entités sans les annotations, simplifiant la manipulation dans les vues.
 
-sn.isi.config
-Les configurations de l'application, y compris la gestion des messages sources et la configuration des logs, sont regroupées dans ce package.
+### `sn.isi.dao`
 
-sn.isi.controller
-Les RestControllers pour chaque entité sont situés ici pour gérer les opérations REST.
+Comprend des interfaces DAO (Data Access Object) pour chaque entité, étendant `JpaRepository` pour gérer les opérations CRUD.
 
-sn.isi
-La classe de base pour démarrer l'application Spring Boot se trouve dans ce package.
+### `sn.isi.mapping`
 
-Annotations Utilisées
-Les entités JPA dans le package sn.isi.entities sont annotées avec @Entity pour signaler leur persistance.
-Les interfaces DAO dans le package sn.isi.dao étendent JpaRepository et sont annotées avec @Repository.
-Les classes services dans le package sn.isi.service sont annotées avec @Service.
-Les RestControllers dans le package sn.isi.controller sont annotés avec @RestController.
-Les classes de configuration dans le package sn.isi.config sont annotées avec @Configuration.
-Les classes de gestion des exceptions dans le package sn.isi.exception peuvent utiliser des annotations telles que @ControllerAdvice pour gérer les exceptions globalement.
-Dans le répertoire sn.isi.resources du projet, se trouvent des fichiers essentiels tels que les vues, les messages d'erreur dans messages.properties, et la configuration de base de log4j dans log4j2.xml. Le fichier crucial application.yml définit le port de démarrage de l'application, le datasource pour la base de données, et la configuration de l'ORM JPA à travers Hibernate.
+Contient des interfaces pour les mappers qui permettent de transformer chaque entité en sa correspondance DTO et vice versa.
 
-Docker
-Le projet utilise Docker pour la conteneurisation, avec un fichier docker-compose.yml expliqué ci-dessous.
-```
-services: 
+### `sn.isi.exception`
 
-  mysql-admin-db: 
+Héberge des classes personnalisées pour la gestion des exceptions.
+
+### `sn.isi.service`
+
+Englobe des services pour chaque entité, gérant les opérations CRUD et d'autres personnalisées.
+
+### `sn.isi.config`
+
+Comprend des configurations pour l'application, y compris la gestion des messages sources et la configuration des logs.
+
+### `sn.isi.controller`
+
+Contient des RestControllers pour chaque entité, gérant les opérations REST.
+
+### `sn.isi`
+
+Contient la classe de base pour le démarrage de l'application Spring Boot.
+
+## Annotations Utilisées
+
+- Les entités JPA dans le package `sn.isi.entities` sont annotées avec `@Entity` pour indiquer leur persistance.
+- Les interfaces DAO dans le package `sn.isi.dao` étendent `JpaRepository` et sont annotées avec `@Repository`.
+- Les classes services dans le package `sn.isi.service` sont annotées avec `@Service`.
+- Les RestControllers dans le package `sn.isi.controller` sont annotés avec `@RestController`.
+- Les classes de configuration dans le package `sn.isi.config` sont annotées avec `@Configuration`.
+- Les classes de gestion des exceptions dans le package `sn.isi.exception` peuvent utiliser des annotations comme `@ControllerAdvice` pour gérer les exceptions globalement.
+
+Au niveau du projet dans `sn.isi.resources`, le dossier est crucial pour les vues et contient des fichiers de configuration essentiels tels que `messages.properties`, et `log4j2.xml`. Notamment, le fichier `application.yml` définit le port de démarrage, le datasource, et l'ORM JPA via `hibernate`.
+
+## Docker
+
+Le projet utilise Docker pour la conteneurisation. Le fichier `docker-compose.yml` à la racine du projet configure les services Docker via Docker Compose. Ci-dessous, une explication des principales lignes du fichier :
+
+```yaml
+services:
+  mysql-admin-db:
+    # Configuration du service MySQL
     image: mysql:8.0
-    container_name: container_mysql-admin-db
-    environment: 
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: adminapp-db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user
-    ports: 
-      - 3306:3306
-    volumes: 
-      - mysql_data:/var/lib/mysql
-    healthcheck: 
-      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
-
-  phpmyadmin-admin-db: 
-    container_name: container_phpmyadmin-admindb
+    # ... (configurations)
+  
+  phpmyadmin-admin-db:
+    # Configuration du service PHPMyAdmin
     image: phpmyadmin/phpmyadmin:latest
-    ports: 
-      - 8085:80
-    environment: 
-      MYSQL_ROOT_PASSWORD: root
-      PMA_HOST: mysql-admin-db
-      PMA_USER: user
-      PMA_PASSWORD: user
-    depends_on: 
-      - mysql-admin-db
-    restart: unless-stopped 
-
-volumes: 
+    # ... (configurations)
+  
+volumes:
   mysql_data:
     driver: local
-
-```
