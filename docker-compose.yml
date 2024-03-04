@@ -1,0 +1,186 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: container-mysql-admin-app-springboot
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: adminapp-db1
+      MYSQL_USER: lamine
+      MYSQL_PASSWORD: passer
+    ports:
+    - 3307:3307
+    volumes:
+    - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+
+  phpmyadmin-admin-db:
+    container_name: container-phpmyadmin-adminapp-db1
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8085:80
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: mysql-adminapp-db1
+      PMA_USER: lamine
+      PMA_PASSWORD: passer
+    depends_on:
+      - mysql-adminapp-db1
+    restart: unless-stopped
+
+  # postgres service
+  postgres-service:
+    image: postgres
+    container_name: postgres-service
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak_db
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: passer
+    ports:
+      - '5432:5432'
+    expose:
+    - '5432'
+
+  # pgadmin interface web pour l'administration de postgresql
+  pgadmin4-service:
+    image: dpage/postgresadmin4
+    container_name: postgresadmin4
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: lamzojr72@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: passer
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+  # keycloak
+  keycloak-service:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres-service:5432/keycloak_db
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: passer
+      KEYCLOAK_ADMIN: admin
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME_STRICT_HTTPS: "false"
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command:
+      - start-dev
+    restart: always
+    ports:
+      - '8080:8080'
+    expose:
+      - '8080'
+    depends_on:
+      - postgres-service
+
+volumes:
+  pgadmin_data:
+  postgres_data:
+  mysql_data:
+    driver: local
+
+
+#  back-end:
+#    image: lamine/admin-app-springboot:0.0.1-SNAPSHOT
+#    container_name: admin-app-springboot-backend
+#    ports:
+#      - 8889:8889
+#
+#    restart: unless-stopped
+#    environment:
+#      spring.datasource.url: jdbc:mysql://mysql:3307/adminapp-db1?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false
+#      spring.datasource.username: root
+#      spring.datasource.password:
+#      JAVA_TOOL_OPTIONS: -Xss256K -XX:ReservedCodeCacheSize=64M - XX:MaxMetaspaceSize=128M -Xmx64M
+#    depends_on:
+#      - mysql
+#    links:
+#      - mysql
+#    profiles:
+#      - all
+#
+#  keycloak:
+#    image: bitnami/keycloak:18.0.0-debian-11-r0
+#    container_name: admin-app-springboot-keycloak
+#    environment:
+#      KEYCLOAK_DATABASE_HOST: mysql
+#      KEYCLOAK_DATABASE_NAME: keycloak
+#      KEYCLOAK_DATABASE_USER: keycloak
+#      KEYCLOAK_DATABASE_SCHEMA: public
+#      KEYCLOAK_DATABASE_PASSWORD: password
+#      KEYCLOAK_ADMIN_USER: admin
+#      KEYCLOAK_ADMIN_PASSWORD: password
+#    ports:
+#      - 8083:8083
+#    depends_on:
+#      - mysql
+#  maildev:
+#    container_name: admin-app-springboot-maildev
+#    image: lamineoziljr/maildev:latest
+#    ports:
+#      - 9999:80
+#      - 25
+#volumes:
+#  postgres_data:
+#    driver: local
+#  mysql_data:
+#    driver: local
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#version: '3.9'
+#
+#services:
+#  mysql-admin-db:
+#    image: mysql:8.0
+#    container_name: container_mysql-admin-db
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_DATABASE: adminapp-db
+#      MYSQL_USER: user
+#      MYSQL_PASSWORD: user
+#    ports:
+#      - 3307:3307
+#    volumes:
+#      - mysql_data:/var/lib/mysql
+#    healthcheck:
+#      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+#
+#
+#  phpmyadmin-admin-db:
+#    container_name: container_phpmyadmin-admindb
+#    image: phpmyadmin/phpmyadmin:latest
+#    ports:
+#      - 8085:80
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      PMA_HOST: mysql-admin-db
+#      PMA_USER: user
+#      PMA_PASSWORD: user
+#    depends_on:
+#      - mysql-admin-db
+#    restart: unless-stopped
+#
+#volumes:
+#  mysql_data:
+#    driver: local
