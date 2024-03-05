@@ -1,3 +1,16 @@
+## Admin-app manage with ELK & Keycloack
+## ELK
+## Captures d'écran
+
+ ## Requette pour recuperer tous les etudiants : http://localhost:9098/api/etudiants/getAllEtudiant
+ ##           
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/elasticsearchfirstrun.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/elas-login-page.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/elas-first-connected.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/reset-elas-password.png?raw=true)
+
+
+
 # Projet admin-app
 
 Ce projet Spring Boot utilise Java 8, Maven, Docker, et des logs pour construire une architecture solide.
