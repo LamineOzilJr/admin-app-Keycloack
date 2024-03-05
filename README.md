@@ -14,6 +14,30 @@
  ## 
  ## 
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/reset-elas-password.png?raw=true)
+ ## 
+ ## 
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/kibana-run.png?raw=true)
+ ## 
+ ## 
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/kibana-config-link.png?raw=true)
+ ## 
+ ## 
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/generate-enrollment-token.png?raw=true)
+ ## 
+ ## 
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/pasted-enroll-token.png?raw=true)
+ ## 
+ ## 
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/kibana-dashbord-connected-by-elastic.png?raw=true)
+ ## 
+ ## 
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/l/install-sample-web-logs.png?raw=true)
+ ## 
+ ## 
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/test-endpoint-spingboot.png?raw=true)
+ ## 
+ ## 
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/final-test-logs.png?raw=true)
 
 
 
