@@ -42,6 +42,18 @@
  ## Et si nous visualisons les logs au niveau de logstash, nous voyons que les informations ont tous bien ete repertiriees
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/final-test-logs.png?raw=true)
 
+### KEYCLOACK
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/auth-denpendencies-pomxml.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/appli-yml-keycloack-config.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/realm-admin-app.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/user-creation.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/user-credential.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/roles-user.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/client-login.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/client-scopes-jwt-default.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/deux-classes-add.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/logintoadmin-app-with-keycloak.png?raw=true)
+![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/final-result-accessToOurEndpoint.png?raw=true)
 
 
 # Projet admin-app
