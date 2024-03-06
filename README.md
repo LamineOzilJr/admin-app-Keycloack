@@ -42,17 +42,40 @@
  ## Et si nous visualisons les logs au niveau de logstash, nous voyons que les informations ont tous bien ete repertiriees
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/final-test-logs.png?raw=true)
 
-### KEYCLOACK
+### KEYCLOACK Integration
+##
+## On ajoute les dependances auth2 et springsecurity au niveau de notre pom.xml
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/auth-denpendencies-pomxml.png?raw=true)
+##
+## On configure keycloack dans notre application springboot dans le fichier application.yml
+## l'id du clien que nous allons creer c'est login et au niveau du provider on renseigne l'uri avec notre realm que nous allons creer
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/appli-yml-keycloack-config.png?raw=true)
+##
+## On cree notre realm avec comme nom : admin-app
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/realm-admin-app.png?raw=true)
+##
+## Ici on cree notre utilisateur
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/user-creation.png?raw=true)
+##
+## On ajoute a cet utilisateur des credentials pour l'authentification dans notre appli
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/user-credential.png?raw=true)
+##
+## On attribut un role a user
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/roles-user.png?raw=true)
+## On cree le client avec le nom : login
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/client-login.png?raw=true)
+##
+## Au niveau des scopes, on met le jwt a defaut
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/client-scopes-jwt-default.png?raw=true)
+##
+## Dans notre appli on ajoute ces deux classes de configuration pour keycloack
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/deux-classes-add.png?raw=true)
+##
+## La on voit que keycloack prend bien en charge l'authentification de notre appli. Donc apres avoir lance notre appli, nous devons nous authentifier sur ADMIN-APP pour 
+## pouvoir acceder a notre application
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/logintoadmin-app-with-keycloak.png?raw=true)
+##
+## Une fois l'accees autorise, nous testons notre endpoint. 
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/keycloack-images/final-result-accessToOurEndpoint.png?raw=true)
 
 
