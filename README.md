@@ -3,40 +3,43 @@
 ## Captures d'écran
 
  ## 
- ##           
+ ## Nous demmarons elasticsearch           
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/elasticsearchfirstrun.png?raw=true)
  ## 
- ## 
+ ## On se log a elasticsearch
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/elas-login-page.png?raw=true)
  ## 
- ## 
+ ## La nous avons bien acces
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/elas-first-connected.png?raw=true)
  ## 
- ## 
+ ## La on regenere um mot de passe pour l'utisateur elastic et l'utiliser pour se connecter dorénavant 
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/reset-elas-password.png?raw=true)
  ## 
- ## 
+ ## La on lance kibana
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/kibana-run.png?raw=true)
  ## 
- ## 
+ ## C'est bien demarre mais nous devons nous rendre sur l'interface d'aministration pour le configurer
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/kibana-config-link.png?raw=true)
  ## 
- ## 
+ ## Ici on genere notre token depuis elasticsearch et que nous allons ensuite utiliser pour le linker a kibana
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/generate-enrollment-token.png?raw=true)
  ## 
- ## 
+ ## ici on renseigne notre token et on clique sur configure elastic
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/pasted-enroll-token.png?raw=true)
  ## 
- ## 
+ ## Tout c'est bien passe : on acces a elastic a partir de kibana 
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/k/kibana-dashbord-connected-by-elastic.png?raw=true)
  ## 
- ## 
+ ## A ce niveau on install un "sample web logs"
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/l/install-sample-web-logs.png?raw=true)
  ## 
- ## 
+ ## La nous donnons a logtash le fichier des logs
+ ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/l/logtashcof.png?raw=true)
+ ##
+ ## Ici nous voyons que le test de notre end-point qui se trouve dans notre application s'est bien passe
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/test-endpoint-spingboot.png?raw=true)
  ## 
- ## 
+ ## Et si nous visualisons les logs au niveau de logstash, nous voyons que les informations ont tous bien ete repertiriees
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/final-test-logs.png?raw=true)
 
 
