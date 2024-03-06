@@ -12,7 +12,7 @@
  ## La nous avons bien acces
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/elas-first-connected.png?raw=true)
  ## 
- ## La on regenere um mot de passe pour l'utisateur elastic et l'utiliser pour se connecter dorénavant 
+ ## La on regenere un mot de passe pour l'utilisateur elastic et l'utiliser pour se connecter dorénavant 
 ![alt text](https://github.com/LamineOzilJr/admin-app-Keycloack/blob/main/elk-images/e/reset-elas-password.png?raw=true)
  ## 
  ## La on lance kibana
